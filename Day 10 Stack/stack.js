@@ -38,53 +38,45 @@
 
 // Push, Pop, Peek: O(1) (constant time) because these operations are performed on the top of the stack, without the need for searching or shifting elements.
 
-// let arr = [];
-// let currentSize = arr.length;
-// let max = 10;
+let arr = [];
+let currentSize = arr.length;
+let max = 10;
 
-// function pushStack(num) {
-//   if (currentSize >= max) {
-//     console.log("your Array length is full", arr.length);
-//     return;
-//   }
-//   arr[currentSize] = num;
-//   currentSize++;
-//   console.log(`Pushed ${num} onto the stack`);
-// }
+function pushStack(num) {
+  if (currentSize >= max) {
+    console.log("your Array length is full", arr.length);
+    return;
+  }
+  arr[currentSize] = num;
+  currentSize++;
+  console.log(`Pushed ${num} onto the stack`);
+}
 
-// function popStack() {
-//   if (currentSize <= 0) {
-//     console.log("Stack is already empty", arr.length);
-//     return;
-//   }
-//   currentSize -= 1;
-//   const popped = arr[currentSize];
-//   arr.length = currentSize;
-//   console.log(`popped ${popped} from the stack`);
-// }
+function popStack() {
+  if (currentSize <= 0) {
+    console.log("Stack is already empty", arr.length);
+    return;
+  }
+  currentSize -= 1;
+  const popped = arr[currentSize];
+  arr.length = currentSize;
+  console.log(`popped ${popped} from the stack`);
+}
 
-// pushStack(10);
-// pushStack(20);
-// pushStack(30);
-// pushStack(40);
-// pushStack(50);
-// pushStack(60);
-// pushStack(70);
-// pushStack(80);
-// pushStack(90);
-// pushStack(100);
-// popStack();
-// popStack();
-// popStack();
-// popStack();
-// popStack();
-// popStack();
-// popStack();
-// popStack();
-// popStack();
-// popStack();
+pushStack(10);
+pushStack(20);
+pushStack(30);
+pushStack(40);
+pushStack(50);
+pushStack(60);
+pushStack(90);
+pushStack(100);
+popStack();
+popStack();
+popStack();
+popStack();
 
-// // console.log(arr);
+// console.log(arr);
 
 class Stack {
   constructor() {
