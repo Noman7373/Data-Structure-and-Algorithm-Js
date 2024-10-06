@@ -159,6 +159,91 @@ console.log(studentName.peek());
 console.log(studentName.pop());
 console.log(studentName.pop());
 
-
 // =======================   Stack Practice =================================
 
+class Problem1 {
+  constructor() {
+    this.Array = [];
+  }
+
+  push(element) {
+    this.Array.push(element);
+  }
+
+  pop() {
+    if (this.isEmpty()) {
+      return "Stack is empty";
+    }
+    return this.Array.pop;
+  }
+
+  isEmpty() {
+    return this.Array.length === 0;
+  }
+
+  getMin() {
+    if (this.isEmpty()) {
+      return "stack is empty";
+    }
+    // [100,3,8,2,10]
+    let min = this.Array[0];
+    for (let i = 0; i < this.Array.length; i++) {
+      if (this.Array[i] < min) {
+        min = this.Array[i];
+      }
+    }
+    return min;
+  }
+}
+
+const checkStack = new Problem1();
+checkStack.push(1000);
+checkStack.push(3);
+checkStack.push(8);
+checkStack.push(2);
+checkStack.push(10);
+
+console.log(checkStack.getMin());
+
+// Implement Queue using Stacks:
+
+class QueueUsingStacks {
+  constructor() {
+    this.stackIn = [];
+    this.stackOut = [];
+  }
+
+  push(x) {
+    this.stackIn.push(x);
+  }
+
+  pop() {
+    if (this.isEmpty()) {
+      return "Stack is Empty";
+    }
+    this.peek();
+    return this.stackIn.pop();
+  }
+
+  peek() {
+    if (this.stackOut.length === 0) {
+      for (let i = 0; i < this.stackIn.length; i++) {
+        this.stackOut.push(this.stackIn.pop());
+      }
+    }
+    return this.stackOut[this.stackOut.length - 1];
+  }
+
+  isEmpty() {
+    return this.stackIn.length === 0 && this.stackOut.length === 0;
+  }
+}
+const queue = new QueueUsingStacks();
+// [1,2]
+queue.push(1);
+queue.push(2);
+queue.push(3);
+console.log("Peek", queue.peek());
+console.log("Pop", queue.pop());
+
+console.log(queue);
