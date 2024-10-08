@@ -33,51 +33,51 @@
 
 // let number = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-// let start = 0;
-// let end = number.length - 1;
-// let mid;
+let start = 0;
+let end = number.length - 1;
+let mid;
 
-// let target = 3;
+let target = 3;
 
-// while (start <= end) {
-//   mid = Math.floor((start + end) / 2);
-//   if (number[mid] == target) {
-//     // console.log(mid);
-//     break;
-//   } else if (number[mid] < target) {
-//     start = mid + 1;
-//     // console.log(number[mid]);
-//     // console.log(start);
-//   } else {
-//     end = mid - 1;
-//     // console.log(end);
-//   }
-// }
-// if (start > end) {
-//   //   console.log(-1);
-// }
+while (start <= end) {
+  mid = Math.floor((start + end) / 2);
+  if (number[mid] == target) {
+    // console.log(mid);
+    break;
+  } else if (number[mid] < target) {
+    start = mid + 1;
+    // console.log(number[mid]);
+    // console.log(start);
+  } else {
+    end = mid - 1;
+    // console.log(end);
+  }
+}
+if (start > end) {
+  //   console.log(-1);
+}
 
 // ===================   Binary Search  Practice  ====================
 
 // probelm 1
 
-// function findFirstOccurance(array, start, end, target) {
-//   let result = -1;
-//   while (start <= end) {
-//     let mid = Math.floor((start + end) / 2);
-//     if (array[mid] === target) {
-//       result = mid;
-//       end = mid - 1;
-//     } else if (array[mid] < target) {
-//       start = mid + 1;
-//     } else {
-//       end = mid - 1;
-//     }
-//   }
-//   return result;
-// }
+function findFirstOccurance(array, start, end, target) {
+  let result = -1;
+  while (start <= end) {
+    let mid = Math.floor((start + end) / 2);
+    if (array[mid] === target) {
+      result = mid;
+      end = mid - 1;
+    } else if (array[mid] < target) {
+      start = mid + 1;
+    } else {
+      end = mid - 1;
+    }
+  }
+  return result;
+}
 
-// console.log(findFirstOccurance([2, 4, 10, 10, 10, 18, 20], 0, 6, 10));
+console.log(findFirstOccurance([2, 4, 10, 10, 10, 18, 20], 0, 6, 10));
 
 // probelm 2
 function findLastOccurance(arr, start, end, target) {
@@ -95,7 +95,7 @@ function findLastOccurance(arr, start, end, target) {
   }
   return result;
 }
-// console.log(findLastOccurance([2, 4, 10, 10, 10, 18, 20], 0, 6, 10));
+console.log(findLastOccurance([2, 4, 10, 10, 10, 18, 20], 0, 6, 10));
 
 // probelm 3
 // arr = [1, 3, 20, 4, 1, 0]
@@ -113,7 +113,7 @@ function findPeakElement(arr, start, end) {
   return result;
 }
 
-// console.log(findPeakElement([1, 3, 20, 4, 1, 0], 0, 5));
+console.log(findPeakElement([1, 3, 20, 4, 1, 0], 0, 5));
 
 // probelm 4
 // Input: arr = [4, 5, 6, 7, 0, 1, 2], target = 0
