@@ -24,37 +24,41 @@ let result = strStack.join("");
 
 let value = "/home/";
 let stack = [];
+let lengthStack = 0;
 
 let component = value.split("/");
 for (let i = 0; i < component.length; i++) {
   let part = component[i];
   if (part === "..") {
     if (stack.length > 0) {
-      stack.pop();
+      lengthStack--;
     }
   } else if (part !== "" && part !== ".") {
-    stack.push(part);
+    stack[lengthStack] = part;
+    lengthStack++;
   }
 }
 
-let finalComponent = "/" + stack.join("/");
+let finalComponent = "/" + stack.slice(0, lengthStack).join("/");
 console.log(finalComponent);
 
 function validComponents(value) {
   let stack = [];
+  let stackLength = 0;
 
   let component = value.split("/");
   for (let i = 0; i < component.length; i++) {
     if (component[i] === "..") {
       if (stack.length > 0) {
-        stack.pop();
+        stackLength--;
       }
     } else if ((component[i] !== "") & (component[i] !== ".")) {
-      stack.push(component[i]);
+      stack[stackLength] = component[i];
+      stackLength++;
     }
   }
 
-  return "/" + stack.join("/");
+  return "/" + stack.slice(0, stackLength).join("/");
 }
 
 console.log(validComponents("/home/"));
