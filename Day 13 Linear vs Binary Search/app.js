@@ -113,26 +113,49 @@ function findPeakElement(arr, start, end) {
   return result;
 }
 
-console.log(findPeakElement([1, 3, 20, 4, 1, 0], 0, 5));
+// console.log(findPeakElement([1, 3, 20, 4, 1, 0], 0, 5));
 
 // probelm 4
 // Input: arr = [4, 5, 6, 7, 0, 1, 2], target = 0
 function searchIndexinRotatedArray(arr, start, end, target) {
-  let result = -1;
-  let sortArray = arr.sort((a, b) => a - b);
+  if (arr[start] < arr[end]) {
+    return arr[start];
+  }
+
+  let find = arr[start];
   while (start <= end) {
     let mid = Math.floor((start + end) / 2);
-    if (sortArray[mid] == target) {
-      result = mid;
-      break;
-    } else if (sortArray[mid] < target) {
+    if (mid > 0 && arr[mid] < arr[mid - 1]) {
+      return arr[mid];
+    } else if (arr[mid] > arr[end]) {
       start = mid + 1;
     } else {
       end = mid - 1;
     }
   }
-
-  return result;
+  return find;
 }
 
 console.log(searchIndexinRotatedArray([4, 5, 6, 7, 0, 1, 2], 0, 6, 0));
+
+// // probelm 5
+//  Input: arr = [3, 4, 5, 1, 2]   Output: 1
+function findMinimum(arr, start, end) {
+  if (arr[start] < arr[end]) {
+    return arr[start];
+  }
+  let minimum = arr[start];
+  while (start <= end) {
+    let mid = Math.floor((start + end) / 2);
+    if (mid > 0 && arr[mid] < arr[mid - 1]) {
+      return arr[mid];
+    } else if (arr[mid] > arr[end]) {
+      start = mid + 1;
+    } else {
+      end = mid - 1;
+    }
+  }
+  return minimum;
+}
+
+console.log(findMinimum([3, 4, 5, 1, 2], 0, 4));
