@@ -240,29 +240,31 @@ console.log(arrNum);
 
 //  Dual-Pivot Quicksort Implementation
 // input [8, 2, 4, 1, 9, 5, 7, 6, 3]
-function dualQuickSort(Number, low, high) {
+function dualPivotQuicksort(Number, low, high) {
   if (low < high) {
     let [pivot1, pivot2] = Partition(Number, low, high);
-    dualQuickSort(Number, low, pivot1 - 1);
-    dualQuickSort(Number, pivot1 + 1, pivot2 - 1);
-    dualQuickSort(Number, pivot2 + 1, high);
+    dualPivotQuicksort(Number, low, pivot1 - 1);
+    dualPivotQuicksort(Number, pivot1 + 1, pivot2 - 1);
+    dualPivotQuicksort(Number, pivot2 + 1, high);
   }
 }
 
 function Partition(Number, low, high) {
+  // Select two pivots
   if (Number[low] > Number[high]) {
     [Number[low], Number[high]] = [Number[high], Number[low]];
   }
   let pivot1 = Number[low];
   let pivot2 = Number[high];
+  // console.log(pivot2);
 
-  let i = low + 1;
-  let j = high - 1;
-  let k = low + 1;
+  let i = low + 1; // Pointer for elements < pivot1
+  let j = high - 1; // Pointer for elements > pivot2
+  let k = low + 1; // Pointer for current element
 
   while (k <= j) {
     if (Number[k] < pivot1) {
-      [Number[i], Number[k]];
+      [Number[i], Number[k]] = [Number[k], Number[i]];
       i++;
     } else if (Number[k] > pivot2) {
       while (Number[j] > pivot2 && k < j) {
@@ -270,12 +272,23 @@ function Partition(Number, low, high) {
       }
       [Number[k], Number[j]] = [Number[j], Number[k]];
       j--;
+      if (Number[k] < pivot1) {
+        [Number[i], Number[k]] = [Number[k], Number[i]];
+        i++;
+      }
     }
-    if (Number[k] < pivot1) {
-      [Number[i], Number[k]][(Number[k], Number[i])];
-      i++;
-    }
+    k++;
   }
-  i++
-  
+  i--;
+  j++;
+
+  // Swap pivots to their correct positions
+  [Number[low], Number[i]] = [Number[i], Number[low]];
+  [Number[high], Number[j]] = [Number[j], Number[high]];
+
+  return [i, j]; // Return the pivot indices
 }
+
+let Number = [8, 2, 4, 1, 9, 5, 7, 6, 3];
+dualPivotQuicksort(Number, 0, Number.length - 1);
+console.log(Number); // Output: [1, 2, 3, 4, 5, 6, 7, 8, 9]
